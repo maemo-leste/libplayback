@@ -1,6 +1,8 @@
-#include "libplayback/playback.h"
-
 #include <dbus/dbus.h>
+#include <string.h>
+
+#include "libplayback/playback.h"
+#include "playback-dbus.h"
 
 static PBBluetoothCb _bluetooth_cb = NULL;
 static void *_bluetooth_data = NULL;
@@ -11,8 +13,8 @@ _bluetooth_override_filter(DBusConnection *connection, DBusMessage *message,
 {
   if (dbus_message_get_type(message) == DBUS_MESSAGE_TYPE_SIGNAL &&
       !strcmp(dbus_message_get_interface(message),
-              "org.maemo.Playback.Manager") &&
-      !strcmp(dbus_message_get_member(message), "BluetoothOverride") )
+              DBUS_PLAYBACK_MANAGER_INTERFACE) &&
+      !strcmp(dbus_message_get_member(message), DBUS_BLUETOOTH_SIGNAL) )
   {
     DBusError error;
     dbus_int32_t status;
@@ -70,10 +72,10 @@ pb_req_bluetooth_override(DBusConnection *connection,
   DBusPendingCall *pending;
   int rv = FALSE;
 
-  message = dbus_message_new_method_call("org.maemo.Playback.Manager",
-                                         "/org/maemo/Playback/Manager",
-                                         "org.maemo.Playback.Manager",
-                                         "RequestBluetoothOverride");
+  message = dbus_message_new_method_call(DBUS_PLAYBACK_MANAGER_SERVICE,
+                                         DBUS_PLAYBACK_MANAGER_PATH,
+                                         DBUS_PLAYBACK_MANAGER_INTERFACE,
+                                         DBUS_PLAYBACK_REQ_BLUETOOTH_METHOD);
   if (!message)
     return FALSE;
 
@@ -116,10 +118,10 @@ pb_get_bluetooth_override(DBusConnection *connection)
   DBusPendingCall *pending;
   int rv = FALSE;
 
-  message = dbus_message_new_method_call("org.maemo.Playback.Manager",
-                                         "/org/maemo/Playback/Manager",
-                                         "org.maemo.Playback.Manager",
-                                         "GetBluetoothOverride");
+  message = dbus_message_new_method_call(DBUS_PLAYBACK_MANAGER_SERVICE,
+                                         DBUS_PLAYBACK_MANAGER_PATH,
+                                         DBUS_PLAYBACK_MANAGER_INTERFACE,
+                                         DBUS_PLAYBACK_GET_BLUETOOTH_METHOD);
   if (!message)
     return FALSE;
 

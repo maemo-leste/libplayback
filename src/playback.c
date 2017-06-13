@@ -3,7 +3,7 @@
 #include <string.h>
 #include <assert.h>
 
-#include "../libplayback/playback.h"
+#include "libplayback/playback.h"
 #include "playback-dbus.h"
 
 #define PLAYBACK_PATH "/org/maemo/playback%u"
