@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/libplayback-1
+
+Name: libplayback-1
+Description: Playback management client API (maemo version)
+Version: 0.5
+Libs: -L${libdir} -lplayback-1
+Cflags: -I${includedir}
+Requires: dbus-1
