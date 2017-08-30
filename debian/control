@@ -1,0 +1,24 @@
+Source: libplayback
+Section: libs
+Priority: optional
+Maintainer: Nikita Ukhryonkov <nekit1000@gmail.com>
+Build-Depends: debhelper (>= 5), libtool, pkg-config, libdbus-1-dev
+
+Package: libplayback-1-0
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: OSSO Playback client library.
+
+Package: libplayback-1-dev
+Architecture: any
+Section: libdevel
+Depends: libplayback-1-0 (= ${binary:Version})
+Description: OSSO Playback management client dev. files
+  Playback management for OSSO (development files).
+
+Package: libplayback-1-dbg
+Architecture: any
+Section: libdevel
+Depends: libplayback-1-0 (= ${binary:Version})
+Description: OSSO Playback client library.
+  This package contains debug symbols
