@@ -2,7 +2,7 @@ Source: libplayback
 Section: libs
 Priority: optional
 Maintainer: Nikita Ukhryonkov <nekit1000@gmail.com>
-Build-Depends: debhelper (>= 5), libtool, pkg-config, libdbus-1-dev
+Build-Depends: debhelper (>= 5), libtool, pkg-config, libdbus-1-dev, libtool-bin
 
 Package: libplayback-1-0
 Architecture: any
