@@ -7,9 +7,9 @@ ifneq (,$(findstring thumb,$(DEB_BUILD_OPTIONS)))
 endif
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -O0
+	CFLAGS += -O0 -g
 else
-	CFLAGS += -O2
+	CFLAGS += -O2 -g
 endif
 
 clean:
