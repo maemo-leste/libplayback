@@ -1232,7 +1232,7 @@ _dbus_playback_message(DBusConnection *connection,
     dbus_message_append_args(msg,
                              DBUS_TYPE_STRING, &introspect,
                              DBUS_TYPE_INVALID);
-    dbus_connection_send(pb->connection, msg, 0);
+    dbus_connection_send(pb->connection, msg, NULL);
     dbus_message_unref(msg);
     return DBUS_HANDLER_RESULT_HANDLED;
   }
