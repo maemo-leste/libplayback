@@ -1214,9 +1214,10 @@ _dbus_playback_message(DBusConnection *connection,
   }
 
   iface = dbus_message_get_interface(message);
+  member = dbus_message_get_member(message);
 
   if (!strcmp(DBUS_INTERFACE_INTROSPECTABLE, iface) &&
-      !strcmp("Introspect", dbus_message_get_member(message)))
+      !strcmp("Introspect", member))
   {
     DBusMessage *msg;
 
